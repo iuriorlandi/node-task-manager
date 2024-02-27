@@ -1,0 +1,27 @@
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# TypeScript
+*.js
+*.map
+*.tsbuildinfo
+
+# VSCode
+.vscode/
+
+# Tests
+__tests__/
+coverage/
+
+# Logs & Build
+logs/
+dist/
+build/
+*.log
+
+# Others
+*.suo
+*.user
+*.sln.docstates
