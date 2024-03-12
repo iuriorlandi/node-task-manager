@@ -20,19 +20,15 @@ const authenticationMiddleware = async (
     });
   }
 
-  const model: Model = { Token: token };
   try {
-    const response = await axios.post(
-      `${AUTH_API_URL}api/auth/validatetoken`,
-      model,
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await axios.get(
+      `${AUTH_API_URL}api/auth/validate-token`,  {
+        headers:{
+          "Authorization": token
+        }
+      });
 
-    if (response.data.valid) {
+    if (response.data.success) {
       next();
     } else {
       return res.status(401).json({
