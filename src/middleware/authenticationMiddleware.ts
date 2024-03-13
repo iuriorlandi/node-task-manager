@@ -1,10 +1,5 @@
 import {Request, Response, NextFunction} from 'express'
 import axios from 'axios'
-import * as https from 'https'
-
-interface Model {
-    Token: string;
-}
 
 const authenticationMiddleware = async (
   req: Request,
@@ -12,9 +7,10 @@ const authenticationMiddleware = async (
   next: NextFunction
 ) => {
   const token = req.header("Authorization")?.replace("Bearer", "").trim();
-  const AUTH_API_URL = process.env.AUTH_API_URL || "http://localhost:3000";
+  const AUTH_API_URL = process.env.AUTH_API_URL || "http://localhost:3000/";
 
   if (!token) {
+    console.log('Token not provided')
     return res.status(401).json({
       message: "Token not provided",
     });
